@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+	<display-name>Software Development Year 4 - Advanced Object Oriented
+		Design Principles and Patterns</display-name>
+	<description>
+		2017 Assignment - A JEE Application for Measuring Document Similarity.
+
+		Make sure you encapsulate any environmental variables like system
+		paths, connection strings, class names
+		and the like in this deployment descriptor. These can be configured as
+		context-param elements and then
+		read and initialised by a start-up servlet.
+	</description>
+
+	<!-- A context is a variable with application wide scope. These can be accessed 
+		easily in a Servlet or JSP page -->
+	<context-param>
+		<param-name>SOME_GLOBAL_OR_ENVIRONMENTAL_VARIABLE</param-name>
+		<param-value>Some Value</param-value>
+	</context-param>
+
+	<!-- A servlet class must be bound to a name -->
+	<servlet>
+		<servlet-name>service-request-handler</servlet-name>
+		<servlet-class>ServiceHandler</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>service-poll-handler</servlet-name>
+		<servlet-class>ServicePollHandler</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+
+	<!-- A servlet name must be bound to a URL mapping, i.e. localhost:8080/doProcess 
+		executes the servlet ie.gmit.sw.ServiceHandler in WEB-INF/classes -->
+	<servlet-mapping>
+		<servlet-name>service-request-handler</servlet-name>
+		<url-pattern>/doProcess</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>service-poll-handler</servlet-name>
+		<url-pattern>/poll</url-pattern>
+	</servlet-mapping>
+</web-app>
